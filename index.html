@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>toidicode.com</title>
+    <link rel="stylesheet" href="" />
+  </head>
+  <style type="text/css" media="screen">
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 500px;
+      display: flex;
+      align-items: center;
+      border: 2px solid #dedede;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .wrapper {
+      padding: 30px;
+      max-width: 500px;
+      background-color: rgb(223, 223, 223);
+      height: auto;
+    }
+
+    /* Style images */
+    .container img {
+      max-width: 60px;
+      margin-right: 20px;
+      border-radius: 50%;
+    }
+
+    /* Style time text */
+    .time-left {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: rgb(0, 81, 255);
+    }
+    .inputChat {
+      padding: 5px 15px;
+      width: 70%;
+      height: 30px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <img src="https://picsum.photos/id/3/300/300" alt="Avatar" />
+      <input type="text" class="inputChat" />
+    </div>
+    <div class="wrapper">
+      <h1>Comment Box</h1>
+      <div class="container1">
+        <img src="https://picsum.photos/id/3/300/300" alt="Avatar" />
+        <div>
+          <div class="time-left">Josh</div>
+          <p>Hello. How are you today?</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const users = [
+      {
+        id: 1,
+        Name: "Nguyen Van A",
+        pic: "https://picsum.photos/id/3/300/300",
+      },
+      {
+        id: 2,
+        pic: "https://picsum.photos/id/200/300/300",
+        Name: "Nguyen Van B",
+      },
+      {
+        id: 3,
+        pic: "https://picsum.photos/id/33/300/300",
+        Name: "Nguyen Van C",
+      },
+    ];
+
+    const comments = [
+      {
+        id: 1,
+        user_id: 1,
+        content: "Hello nodejs",
+      },
+      {
+        id: 2,
+        user_id: 3,
+        content: "Hello nodejs JS",
+      },
+      {
+        id: 3,
+        user_id: 2,
+        content: "Hello nodejs JS Hee",
+      },
+    ];
+    let merge = users.map((item, i) => Object.assign({}, item, comments[i]));
+    console.log(merge);
+    let listComment = merge.map((item) => {
+        return `<div class="container">
+        <img src=${item.pic} alt="Avatar" />
+        <div>
+          <div class="time-left">${item.Name}</div>
+          <p>${item.content}</p>
+        </div>
+      </div>`
+    })
+    const container1 = document.querySelector('.container1')
+    container1.innerHTML = listComment
+  </script>
+</html>
